@@ -1,18 +1,30 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useTRPC } from "@/trpc/client";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import React from "react";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
-type Props = {};
-
-const Client = (props: Props) => {
+const Client = () => {
   const trpc = useTRPC();
-  const { data } = useSuspenseQuery(
-    trpc.helloAi.queryOptions({ text: "Longdoo" })
+  const invoke = useMutation(
+    trpc.invoke.mutationOptions({
+      onSuccess: () => {
+        toast.success("Background job started");
+      },
+    })
   );
 
-  return <div>HELLO {JSON.stringify(data)}</div>;
+  return (
+    <div>
+      <Button
+        disabled={invoke.isPending}
+        onClick={() => invoke.mutate({ text: "Longdoo" })}
+      >
+        Invoke background job
+      </Button>
+    </div>
+  );
 };
 
 export default Client;
