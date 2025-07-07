@@ -15,7 +15,7 @@ export const helloWorld = inngest.createFunction(
   { event: "test/hello.world" },
   async ({ event, step }) => {
     const sandboxId = await step.run("get-sandbox-id", async () => {
-      const sandbox = await Sandbox.create("vibe-saas-nextjs-test-2");
+      const sandbox = await Sandbox.create("vibe-saas-nextjs-test-3");
       return sandbox.sandboxId;
     });
 
@@ -147,12 +147,6 @@ export const helloWorld = inngest.createFunction(
     });
 
     const result = await network.run(event.data.value);
-
-    // const codeWriterAgent = createAgent({
-    //   name: "codeWriter",
-    //   system: "You are an expert code writer.",
-    //   model: anthropic({ model: "claude-3-5-sonnet-latest", defaultParameters: { max_tokens: 100 } }),
-    // });
 
     const sandboxUrl = await step.run("get-sandbox-url", async () => {
       const sandbox = await getSandbox(sandboxId);
