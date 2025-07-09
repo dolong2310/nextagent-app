@@ -8,6 +8,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import UserControl from "@/components/UserControl";
 import { Fragment } from "@/generated/prisma";
 import { FileCollection } from "@/types";
 import { CodeIcon, CrownIcon, EyeIcon } from "lucide-react";
@@ -70,6 +71,7 @@ const ProjectView = ({ projectId }: Props) => {
                     <CrownIcon /> Upgrade
                   </Link>
                 </Button>
+                <UserControl />
               </div>
             </div>
 
