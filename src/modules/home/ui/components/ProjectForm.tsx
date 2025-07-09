@@ -14,6 +14,7 @@ import TextAreaAutosize from "react-textarea-autosize";
 import { toast } from "sonner";
 import { z } from "zod";
 import { PROJECT_TEMPLATES } from "../../constants";
+import { useClerk } from "@clerk/nextjs";
 
 const formSchema = z.object({
   value: z
@@ -24,6 +25,7 @@ const formSchema = z.object({
 
 const ProjectForm = () => {
   const router = useRouter();
+  const clerk = useClerk();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -45,8 +47,14 @@ const ProjectForm = () => {
         router.push(`/projects/${data.id}`);
       },
       onError: (error) => {
-        // TODO: Redirect to pricing page if specific error
         toast.error(error.message || "Failed to create project");
+
+        if (error.data?.code === "UNAUTHORIZED") {
+          // Redirect to sign in page if not authenticated
+          clerk.openSignIn();
+        }
+
+        // TODO: Redirect to pricing page if specific error
       },
     })
   );
