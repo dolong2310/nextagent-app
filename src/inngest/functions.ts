@@ -1,4 +1,6 @@
+import prisma from "@/lib/db";
 import { PROMPT } from "@/prompt";
+import { FileCollection } from "@/types";
 import { Sandbox } from "@e2b/code-interpreter";
 import {
   createAgent,
@@ -10,11 +12,10 @@ import {
 import z from "zod";
 import { inngest } from "./client";
 import { getSandbox, lastAssistantTextMessageContent } from "./utils";
-import prisma from "@/lib/db";
 
 interface AgentState {
   summary: string;
-  files: { [path: string]: string };
+  files: FileCollection;
 }
 
 export const codeAgentFunction = inngest.createFunction(
@@ -98,7 +99,7 @@ export const codeAgentFunction = inngest.createFunction(
             );
 
             if (typeof newFiles === "object") {
-              network.state.data.files = newFiles as { [path: string]: string };
+              network.state.data.files = newFiles as FileCollection;
             }
           },
         }),
