@@ -1,5 +1,6 @@
 "use client";
 
+import ThemeToggle from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import UserControl from "@/components/UserControl";
 import useScroll from "@/hooks/useScroll";
@@ -26,23 +27,26 @@ const Navbar = (props: Props) => {
           <span className="font-semibold text-lg">NextAgent</span>
         </Link>
 
-        <SignedOut>
-          <div className="flex gap-2">
-            <SignUpButton>
-              <Button variant="outline" size="sm">
-                Sign up
-              </Button>
-            </SignUpButton>
+        <div className="flex items-center gap-4">
+          <SignedOut>
+            <div className="flex gap-2">
+              <SignUpButton>
+                <Button variant="outline" size="sm">
+                  Sign up
+                </Button>
+              </SignUpButton>
 
-            <SignInButton>
-              <Button size="sm">Sign in</Button>
-            </SignInButton>
-          </div>
-        </SignedOut>
+              <SignInButton>
+                <Button size="sm">Sign in</Button>
+              </SignInButton>
+            </div>
+          </SignedOut>
 
-        <SignedIn>
-          <UserControl showName />
-        </SignedIn>
+          <SignedIn>
+            <UserControl showName />
+          </SignedIn>
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );
