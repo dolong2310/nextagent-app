@@ -1,9 +1,10 @@
 import { inngest } from "@/inngest/client";
 import prisma from "@/lib/db";
-import { protectedProcedure, createTRPCRouter } from "@/trpc/init";
-import z from "zod";
-import { generateSlug } from "random-word-slugs";
+import { consumeCredits } from "@/lib/usage";
+import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 import { TRPCError } from "@trpc/server";
+import { generateSlug } from "random-word-slugs";
+import z from "zod";
 
 export const projectsRouter = createTRPCRouter({
   getOne: protectedProcedure
@@ -54,6 +55,22 @@ export const projectsRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input, ctx }) => {
+      try {
+        await consumeCredits();
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Something went wrong",
+          });
+        } else {
+          throw new TRPCError({
+            code: "TOO_MANY_REQUESTS",
+            message: "You have exceeded your usage limit",
+          });
+        }
+      }
+
       const createdProject = await prisma.project.create({
         data: {
           userId: ctx.auth.userId,
