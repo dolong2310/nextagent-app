@@ -1,6 +1,11 @@
 import ProjectForm from "@/modules/home/ui/components/ProjectForm";
 import ProjectList from "@/modules/home/ui/components/ProjectList";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 const Home = () => {
   return (

@@ -3,10 +3,13 @@
 import useCurrentTheme from "@/hooks/useCurrentTheme";
 import { SignIn } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Metadata } from "next";
 
-type Props = {};
+export const metadata: Metadata = {
+  title: "Sign In",
+};
 
-const SignInPage = (props: Props) => {
+const SignInPage = () => {
   const currentTheme = useCurrentTheme();
   return (
     <div className="flex flex-col max-w-3xl mx-auto w-full">

@@ -3,11 +3,14 @@
 import useCurrentTheme from "@/hooks/useCurrentTheme";
 import { PricingTable } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Metadata } from "next";
 import Image from "next/image";
 
-type Props = {};
+export const metadata: Metadata = {
+  title: "Pricing",
+};
 
-const Pricing = (props: Props) => {
+const Pricing = () => {
   const currentTheme = useCurrentTheme();
   return (
     <div className="flex flex-col max-w-3xl mx-auto w-full">
