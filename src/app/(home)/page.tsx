@@ -16,7 +16,7 @@ const Home = () => {
           />
         </div>
         <h1 className="text-2xl md:text-5xl font-bold text-center">
-          Build something with Vibe
+          Build something with NextAgent
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground text-center">
           Create apps and websites by chatting with AI

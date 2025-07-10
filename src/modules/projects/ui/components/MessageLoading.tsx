@@ -43,7 +43,7 @@ const MessageLoading = () => {
           height={18}
           className="shrink-0"
         />
-        <span className="text-sm font-medium">Vibe</span>
+        <span className="text-sm font-medium">NextAgent</span>
       </div>
 
       <div className="pl-8 flex flex-col gap-y-4">
