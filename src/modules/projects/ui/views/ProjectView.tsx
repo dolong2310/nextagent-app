@@ -15,6 +15,7 @@ import { useAuth } from "@clerk/nextjs";
 import { CodeIcon, CrownIcon, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { Suspense, useState } from "react";
+import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
 import FragmentWeb from "../components/FragmentWeb";
 import MessagesContainer from "../components/MessagesContainer";
 import ProjectHeader from "../components/ProjectHeader";
@@ -38,16 +39,20 @@ const ProjectView = ({ projectId }: Props) => {
           minSize={20}
           className="flex flex-col min-h-0"
         >
-          <Suspense fallback={<div>Loading project...</div>}>
-            <ProjectHeader projectId={projectId} />
-          </Suspense>
-          <Suspense fallback={<div>Loading messages...</div>}>
-            <MessagesContainer
-              projectId={projectId}
-              activeFragment={activeFragment}
-              setActiveFragment={setActiveFragment}
-            />
-          </Suspense>
+          <ReactErrorBoundary fallback={<div>Error header</div>}>
+            <Suspense fallback={<div>Loading header...</div>}>
+              <ProjectHeader projectId={projectId} />
+            </Suspense>
+          </ReactErrorBoundary>
+          <ReactErrorBoundary fallback={<div>Error messages</div>}>
+            <Suspense fallback={<div>Loading messages...</div>}>
+              <MessagesContainer
+                projectId={projectId}
+                activeFragment={activeFragment}
+                setActiveFragment={setActiveFragment}
+              />
+            </Suspense>
+          </ReactErrorBoundary>
         </ResizablePanel>
 
         <ResizableHandle className="hover:bg-primary transition-colors" />
