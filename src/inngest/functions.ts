@@ -45,8 +45,9 @@ export const codeAgentFunction = inngest.createFunction(
             projectId: event.data.projectId,
           },
           orderBy: {
-            createdAt: "desc", // TODO: Change to "asc" if AI does not understand what is the latest message
+            createdAt: "desc",
           },
+          take: 5,
         });
 
         for (const message of messages) {
@@ -57,7 +58,7 @@ export const codeAgentFunction = inngest.createFunction(
           });
         }
 
-        return formattedMessages;
+        return formattedMessages.reverse(); // Reverse to maintain chronological order
       }
     );
 
