@@ -173,3 +173,19 @@
 - Connect Inngest to Vercel
   + Redeploy
 - Test the app
+
+### Documents related
+- https://neon.com/
+- https://www.prisma.io/docs/orm
+- https://trpc.io/docs
+- https://www.inngest.com/docs
+- https://agentkit.inngest.com/overview
+- https://platform.openai.com/docs/overview
+- https://clerk.com/docs
+
+### Run source commands
+- pnpm i && pnpm dev
+- npx inngest-cli@latest dev
+- npx prisma migrate dev --name testing
+- npx prisma reset
+- npx prisma studio
