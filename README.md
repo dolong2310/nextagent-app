@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Built with Next.js 15, React 19, Tailwind v4, and a fully modern AI-first toolchain.
 
-## Getting Started
+📲 [Visit project here!](https://nextagent-app.vercel.app/)
 
-First, run the development server:
+# Key features:
+🚀 Next.js 15 + React 19
+🎨 Tailwind v4 + Shadcn/ui
+📡 tRPC for full-stack type safety
+🔁 Inngest background jobs
+🧠 Inngest agent toolkit
+🔐 Clerk authentication
+💳 Clerk billing
+🧱 Component and app generation from AI prompts
+🗂️ Live project preview with URL access
+🖥️ E2B cloud sandboxes for runtime execution
+🐳 Docker-based sandbox templating
+🧠 AI model support (OpenAI, Anthropic, Grok)
+📦 Prisma + Neon for database integration
+🤖 CodeRabbit AI-powered PR reviews
+🧾 Built-in credit system with usage tracking
+🧪 Preview + code explorer toggle
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Setup
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Setup Next.js project
+  - Confirm environment:
+    - Node.js
+    - npm
+- Verify files & versions
+- Setup Shadcn/UI
+- Create GitHub repository
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- PostgreSQL database (Neon)
+- Setup Prisma
+  - Add schema
+  - Basic migrations
+  - Database studio
+  - Database reset
 
-## Learn More
+### 3. Setup tRPC
 
-To learn more about Next.js, take a look at the following resources:
+- Experiment with client component
+- Experiment with server component
+- Preview prefetching
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. AI Jobs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Choose your AI provider
+  - OpenAI ✅
+    - Best choice 🏆
+    - gpt-4.1
+    - Normal rate limit, fast reset ✅
+  - Anthropic (Claude) ✅
+    - claude-sonnet-3.5
+    - claude-sonnet-4
+    - Strict rate limit, 24h+ reset ❌
 
-## Deploy on Vercel
+### 6. E2B Sandboxes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Setup E2B
+  - Create an account
+  - Install CLI
+  - Connect to your account
+  - Create a Dockerfile template
+  - Install Docker
+  - Push the template to E2B
+- Preview Next.js app inside a Sandbox
+  - Start a sandbox in inngest with new template
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 7. Agent Tools
+
+- Add tools to agent
+  - "terminal"
+  - "createOrUpdateFiles"
+  - "readFiles"
+- Add a new prompt
+- Add agent network & routers
+
+### 8. Messages
+
+- Create "Message" schema
+- Create "Fragment" schema
+- Save User prompt as message
+- Save AI Response as message & fragment
+
+### 9. Projects
+
+- Create "Project" schema
+- Add "Message" relations
+- Create new project on user prompt
+- Preserve "projectId" in background jobs
+
+### 10. Messages UI
+
+- Create Project view
+- Create Messages container
+  - Create Message card
+  - Create Message form
+- Modify Messages "getMany" procedure
+
+### 11. Project Header
+
+- Create Project Header
+- Add Fragment selection
+- Add Loading state
+
+### 12. Fragment View
+
+- Create Fragment View
+
+### 13. Code View
+
+- Create Tabs in Project View
+- Create File Explorer
+  - Create Code View
+  - Create Tree View
+  - Create File path Breadcrumbs
+
+### 14. Home Page
+
+- Create Home layout
+- Create Home page
+  + Create Project form
+  + Create Project list
+
+### 15. Theme
+
+- Pick nad apply new theme
+
+### 16. Authentication
+
+- Create a Clerk account
+- Setup Clerk
+  + Update .env
+  + Add ClerkProvider
+  + Add Sign in and Sign up screens
+  + Add middleware
+- Create home layout Navbar
+- Create User Control component
+- Create protected tRPC procedures
+- Update Prisma Schema
+
+### 17. Billing
+
+- Enable billing in Clerk
+- Create pricing page
+- Add Rate limiting
+  + Update prisma schema
+  + Create util
+- Create Usage component
+- Update procedures to trigger credit spend
+
+### 18. Agent Memory
+
+- Add previous messages context
+- Add fragment title generation
+- Add response message generation
+
+### 19. Bug Fixes
+
+- Increase Sandbox expiration
+- Make E2B Template private
+- Improve Conversation history
+- Improve Error handling
+
+### 20. Deployment
+
+- Deploy to Vercel
+- Update Environment variables
+  + Redeploy
+- Connect Inngest to Vercel
+  + Redeploy
+- Test the app
